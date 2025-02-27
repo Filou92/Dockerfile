@@ -1,0 +1,9 @@
+{
+  "name": "n8n-render",
+  "version": "1.0.0",
+  "dependencies": {
+    "pdf2json": "^2.0.1",
+    "mammoth": "^1.4.23",
+    "n8n": "^1.36.1"
+  }
+}
