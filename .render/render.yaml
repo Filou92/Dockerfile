@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: n8n-main
+    env: node
+    buildCommand: docker build -t n8n-render .
+    startCommand: n8n start
+    envVars:
+      - key: N8N_HOST
+        value: 0.0.0.0
+      - key: WEBHOOK_URL
+        generateValue: true
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: OPENAI_KEY
+        sync: false
+    plan: starter # Minimum recommandé (1GB RAM)
+
+  - type: worker
+    name: file-processor
+    env: node
+    buildCommand: npm install -g pdf2json mammoth
+    startCommand: node worker.js
